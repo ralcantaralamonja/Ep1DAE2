@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de cursos</title>
+</head>
+<body>
+<h1>Gestión de Carreras</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> NOMBRE </th>
+        <th> APELLIDOS</th>
+        <th> DNI </th>
+        <th> CORREO </th>
+        <th> CARRERA </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="estudiante : ${estudiantes}">
+        <td th:text="${estudiante.id}"></td>
+        <td th:text="${estudiante.nombres}"></td>
+        <td th:text="${estudiante.apellidos}"></td>
+        <td th:text="${estudiante.dni}"></td>
+        <td th:text="${estudiante.correo}"></td>
+        <td th:text="${estudiante.carrera.nombre}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

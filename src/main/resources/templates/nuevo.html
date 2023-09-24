@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Curso</title>
+</head>
+<body>
+
+    <h1>Nuevo Curso</h1>
+
+    <form th:action="@{''}" method="post" th:object="${curso}">
+        <div>
+            <label for="nrc">NRC</label>
+            <input type="text" id="nrc" th:field="*{nrc}">
+
+        </div>
+
+        <div>
+            <label for="nombre">NOMBRE</label>
+            <input type="text" id="nombre" th:field="*{nombre}">
+
+        </div>
+
+        <div>
+            <label for="creditos">CREDITOS</label>
+            <input type="number" id="creditos" th:field="*{creditos}">
+
+        </div>
+
+        <div>
+            <label for="horas">HORAS</label>
+            <input type="number" id="horas" th:field="*{horas}">
+        </div>
+
+        <div>
+            <label for="modalidad">MODALIDAD</label>
+            <input type="text" id="modalidad" th:field="*{modalidad}">
+        </div>
+
+        <div>
+            <label for="area">Area</label>
+            <input type="text" id="area" th:field="*{area}">
+        </div>
+
+        <button>Guardar</button>
+
+        <a href="/cursos>">Cancelar</a>
+    </form>
+
+</body>
+</html>
