@@ -4,32 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de cursos</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Fira+Sans+Extra+Condensed:wght@400;500&family=Jost:wght@200;400;700;900&family=PT+Serif:wght@400;700&family=Quicksand:wght@300;500;700&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+
 </head>
 <body>
-<h1>Gestión de Carreras</h1>
+<h1>Gestión de Estudiantes</h1>
 
-<table>
-    <thead>
-    <tr>
-        <th> ID </th>
-        <th> NOMBRE </th>
-        <th> APELLIDOS</th>
-        <th> DNI </th>
-        <th> CORREO </th>
-        <th> CARRERA </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="estudiante : ${estudiantes}">
-        <td th:text="${estudiante.id}"></td>
-        <td th:text="${estudiante.nombres}"></td>
-        <td th:text="${estudiante.apellidos}"></td>
-        <td th:text="${estudiante.dni}"></td>
-        <td th:text="${estudiante.correo}"></td>
-        <td th:text="${estudiante.carrera.nombre}"></td>
-    </tr>
-    </tbody>
-</table>
+
+
+<div class="ingresar">
+    <form class="head" th:action="@{/estudiantes/crear}" method="post" th:object="${estudiante}">
+
+
+        <label for="nombres">Nombre:</label>
+        <input type="text" id="nombres" name="nombres" />
+
+        <label for="apellidos">Apellido:</label>
+        <input type="text" id="apellidos" name="apellidos" />
+
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" />
+
+        <label for="correo">Correo:</label>
+        <input type="text" id="correo" name="correo" />
+
+        <label for="carrera">Carrera:</label>
+        <input type="text" id="carrera" name="carrera" />
+
+        <br>
+        <input class="btnGuardar" type="submit" value="Guardar">
+    </form>
+</div>
+
+<div class="tabla">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
+            <th>DNI</th>
+            <th>CORREO</th>
+            <th>CARRERA</th>
+
+        </tr>
+
+        <tr th:each="estudiante : ${estudiantes}">
+            <td th:text="${estudiante.id}"></td>
+            <td th:text="${estudiante.nombres}"></td>
+            <td th:text="${estudiante.apellidos}"></td>
+            <td th:text="${estudiante.dni}"></td>
+            <td th:text="${estudiante.correo}"></td>
+            <td th:text="${estudiante.carrera.nombre}"></td>
+            <td>
+                <a th:href="@{/estudiantes/editar/{id}(id=${estudiante.id})}">
+                    <button type="button">Editar</button>
+                </a>
+            </td>
+
+            <td>
+                <form th:action="@{/estudiantes/eliminar/{id}(id=${estudiante.id})}" method="delete">
+                    <input type="hidden" name="_method" value="delete" />
+                    <button type="submit">Eliminar</button>
+                </form>
+
+            </td>
+
+        </tr>
+    </table>
+</div>
 
 </body>
 </html>
