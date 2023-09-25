@@ -15,8 +15,11 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/estudiantes")
 public class EstudianteControler {
+
+
     @Autowired
     private EstudianteRepository estudianteRepository;
+
     @GetMapping("")
     String estudianteindex (Model model){
         List<Estudiante> estudiantes = estudianteRepository.findAll();
@@ -32,18 +35,19 @@ public class EstudianteControler {
 
 
 }
-    @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable int id) {
-        Optional<Estudiante> optionalEstudiante = estudianteRepository.findById(id);
 
+    @DeleteMapping("/eliminar/{id}")
+    public String eliminarEstudiante(@PathVariable int id) {
+        Optional<Estudiante> optionalEstudiante = estudianteRepository.findById(id);
         if (optionalEstudiante.isPresent()) {
             estudianteRepository.delete(optionalEstudiante.get());
-            return ResponseEntity.noContent().build(); // Retorna 204 No Content después de la eliminación
+            return "redirect:/estudiantes"; // Redirige después de eliminar
         } else {
             throw new EstudianteNotFundException(id);
         }
-
     }
+
+
     @GetMapping("/editar/{id}")
     public String editarEstudiante(@PathVariable int id, Model model) {
         Optional<Estudiante> optionalEstudiante = estudianteRepository.findById(id);

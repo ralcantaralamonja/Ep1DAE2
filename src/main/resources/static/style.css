@@ -75,5 +75,16 @@ table button:hover {
 .tabla {
   margin: 80px auto; /* Ajusta el margen superior e inferior según tus necesidades */
   width: 80%; /* Puedes ajustar el ancho según tus necesidades */
+  }
+#mensajePositivo{
 
+   border: 2px solid black; /* Borde negro */
+    color: blue; /* Texto azul */
+    text-align: center; /* Centrado del contenido */
+}
+
+#mensajeNegativo{
+   border: 2px solid black; /* Borde negro */
+    color: red; /* Texto azul */
+    text-align: center; /* Centrado del contenido */
 }
