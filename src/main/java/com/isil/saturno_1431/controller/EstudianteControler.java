@@ -47,7 +47,6 @@ public class EstudianteControler {
         }
     }
 
-
     @GetMapping("/editar/{id}")
     public String editarEstudiante(@PathVariable int id, Model model) {
         Optional<Estudiante> optionalEstudiante = estudianteRepository.findById(id);
@@ -60,13 +59,14 @@ public class EstudianteControler {
             throw new EstudianteNotFundException(id);
         }
     }
-    @PostMapping("/actualizar/{id}")
+    @PostMapping("/editar/{id}")
     public String actualizarEstudiante(@ModelAttribute Estudiante estudiante) {
         // Verifica si el estudiante existe en la base de datos
         Optional<Estudiante> optionalEstudiante = estudianteRepository.findById(estudiante.getId());
         if (optionalEstudiante.isPresent()) {
             // Actualiza los datos del estudiante con los nuevos valores
             Estudiante existingEstudiante = optionalEstudiante.get();
+            existingEstudiante.setId(estudiante.getId());
             existingEstudiante.setNombres(estudiante.getNombres());
             existingEstudiante.setApellidos(estudiante.getApellidos());
             existingEstudiante.setDni(estudiante.getDni());
