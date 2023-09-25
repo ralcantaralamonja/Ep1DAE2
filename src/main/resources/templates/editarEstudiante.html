@@ -8,7 +8,7 @@
 <body>
 <h1 th:text="'Editar a alumno: ' +  ${estudiante.nombres}">  </h1>
 <div>
-  <form th:action = "@{/editarEstudiante(id=${estudiante.id})}" method="post" th:object="${estudiante}">
+  <form th:action="@{/estudiantes/actualizar}" method="post" th:object="${estudiante}">
     <label for="nombres">Nombre</label>
     <input type="text" id="nombres" name="nombres" th:value="${estudiante.nombres}"/>
     <label for="apellidos">Apellidos</label>
@@ -23,9 +23,15 @@
     <br>
     <br>
     <br>
-    <button class="btnGuardar" type="submit"> Actualizar </button>
+
+    <form th:action="@{/estudiantes/actualizar/{id}(id=${estudiante.id})}" method="post" th:object="${estudiante}">
+      <!-- Campos de edición -->
+      <input type="hidden" name="_method" value="update" />
+      <button class="btnGuardar" type="submit">Actualizar</button>
+    </form>
+
   </form>
-  <a href="/estudiantes">Regresar </a>
+  <a href="/estudiantes">Regresar</a>
 </div>
 
 </body>

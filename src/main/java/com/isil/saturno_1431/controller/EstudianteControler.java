@@ -60,6 +60,26 @@ public class EstudianteControler {
             throw new EstudianteNotFundException(id);
         }
     }
+    @PostMapping("/actualizar/{id}")
+    public String actualizarEstudiante(@ModelAttribute Estudiante estudiante) {
+        // Verifica si el estudiante existe en la base de datos
+        Optional<Estudiante> optionalEstudiante = estudianteRepository.findById(estudiante.getId());
+        if (optionalEstudiante.isPresent()) {
+            // Actualiza los datos del estudiante con los nuevos valores
+            Estudiante existingEstudiante = optionalEstudiante.get();
+            existingEstudiante.setNombres(estudiante.getNombres());
+            existingEstudiante.setApellidos(estudiante.getApellidos());
+            existingEstudiante.setDni(estudiante.getDni());
+            existingEstudiante.setCorreo(estudiante.getCorreo());
+            existingEstudiante.setCarrera(estudiante.getCarrera());
+
+            // Guarda el estudiante actualizado en la base de datos
+            estudianteRepository.save(existingEstudiante);
+            return "redirect:/estudiantes"; // Redirige después de actualizar
+        } else {
+            throw new EstudianteNotFundException(estudiante.getId());
+        }
+    }
 
 
 
