@@ -5,6 +5,7 @@ import com.isil.saturno_1431.model.Estudiante;
 import com.isil.saturno_1431.repository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,12 +30,19 @@ public class EstudianteControler {
     }
 
     @PostMapping("/crear")
-    public String crear(Model model, @ModelAttribute Estudiante estudiante) {
-        estudianteRepository.save(estudiante);
+    public String crear(RedirectAttributes redirectAttributes, @ModelAttribute Estudiante estudiante) {
+        try {
+            estudianteRepository.save(estudiante);
+            redirectAttributes.addFlashAttribute("exito", true); // Agregar mensaje de éxito
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", true); // Agregar mensaje de error
+            e.printStackTrace(); // Puedes registrar la excepción si es necesario
+        }
         return "redirect:/estudiantes";
+    }
 
 
-}
+
 
     @DeleteMapping("/eliminar/{id}")
     public String eliminarEstudiante(@PathVariable int id) {
