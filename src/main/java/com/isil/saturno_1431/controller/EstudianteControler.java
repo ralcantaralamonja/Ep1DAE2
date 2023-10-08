@@ -5,6 +5,8 @@ import com.isil.saturno_1431.model.Estudiante;
 import com.isil.saturno_1431.repository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,8 @@ public class EstudianteControler {
     }
 
     @PostMapping("/crear")
-    public String crear(RedirectAttributes redirectAttributes, @ModelAttribute Estudiante estudiante) {
+    public String crear(RedirectAttributes redirectAttributes, @ModelAttribute Estudiante estudiante, BindingResult bindingResult) {
+
         try {
             estudianteRepository.save(estudiante);
             redirectAttributes.addFlashAttribute("exito", true); // Agregar mensaje de éxito

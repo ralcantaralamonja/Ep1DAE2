@@ -10,7 +10,8 @@
 <div>
   <form th:action="@{/estudiantes/editar/{id}(id=${estudiante.id})}" method="post" th:object="${estudiante}">
     <label for="nombres">Nombre</label>
-    <input type="text" id="nombres" name="nombres" th:value="${estudiante.nombres}"/>
+    <input type="text" id="nombres" th:field="*{nombres}" name="nombres" th:value="${estudiante.nombres}"/>
+    </div>
     <label for="apellidos">Apellidos</label>
     <input type="text" id="apellidos" name="apellidos" th:value="${estudiante.apellidos}"/>
     <label for="dni"> DNI</label>
