@@ -2,9 +2,11 @@ package com.isil.saturno_1431.model;
 
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Reference;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -22,9 +24,11 @@ public class Estudiante {
     @NotBlank
     @NotNull
     private String apellidos;
-    @Column(unique = true)
-    @Size(max = 8, min = 8)
-    private  Integer dni;
+
+    @Column(unique=true)
+    @NotNull
+    @Size( min = 8)
+    private  String dni;
     @NotNull
     @NotBlank
     private  String correo;
