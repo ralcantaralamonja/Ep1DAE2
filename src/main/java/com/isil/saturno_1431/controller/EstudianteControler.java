@@ -71,7 +71,11 @@ public class EstudianteControler {
         }
     }
     @PostMapping("/editar/{id}")
-    public String actualizarEstudiante(@ModelAttribute Estudiante estudiante) {
+    public String actualizarEstudiante(Model model, @ModelAttribute @Validated Estudiante estudiante, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("estudiante", estudiante);
+            return "editarEstudiante";
+        }
         // Verifica si el estudiante existe en la base de datos
         Optional<Estudiante> optionalEstudiante = estudianteRepository.findById(estudiante.getId());
         if (optionalEstudiante.isPresent()) {
