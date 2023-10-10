@@ -47,20 +47,19 @@
 
 </div>
 </div >
-    <div class="mb-2">
-    <label for="carrera"> Carrera</label>
-    <input type="text" id="carrera" th:field="*{carrera}" class="form-control" name="carrera" th:value="${estudiante.carrera.nombre}" th:errorclass="is-invalid"/>
-<div class="invalid-feedback"
-     th:errors="*{carrera}"
-     th:if="${#fields.hasErrors('carrera')}">
+      <div class="mb-2">
+          <label for="carrera">Carrera</label>
+          <input type="text" id="carrera" th:field="*{carrera}" class="form-control" th:errorclass="is-invalid">
+          <div class="invalid-feedback"
+               th:errors="*{carrera}"
+               th:if="${#fields.hasErrors('carrera')}">
+          </div>
+      </div>
 
-</div>
-</div >
     <br>
     <br>
     <br>
      <button class="btnGuardar" type="submit">Actualizar</button>
-
 
   </form>
   <a href="/estudiantes">Regresar</a>

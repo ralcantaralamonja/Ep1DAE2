@@ -38,19 +38,19 @@ table tr td {
   border: none; /* Agrega 'border: none;' para eliminar el borde */
 }
 
-.btnGuardar {
-  padding: 5px 40px;
+/*.btnGuardar {
+  padding: 5px 20px; *//* Ajusta el padding según sea necesario *//*
   background-color: #252440;
   color: #3e5f8a;
   font-family: 'Fira Sans Extra Condensed', sans-serif;
   font-size: 15px;
-  position: relative;
-  margin: 20px;
-  margin-left: 800px;
-  outline: none;
+  border: none; *//* Quitamos el borde para evitar problemas de ancho *//*
   border-radius: 25px;
   transition: background-color 0.3s;
-}
+  width: 200px; *//* Establece el ancho deseado en píxeles o unidades de medida *//*
+}*/
+
+
 .btnGuardar:hover {
   background-color: #252850; /* Cambia el color al pasar el mouse */
   color: #fff;
