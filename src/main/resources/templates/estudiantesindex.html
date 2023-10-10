@@ -11,9 +11,6 @@
 </head>
 <body>
 <h1>Gestión de Estudiantes</h1>
-<div class="text-end">
-    <a href="/estudiantes/nuevo" class="btn btn-primary">Nuevo Estudiante</a>
-</div>
 
 
 <!-- Mensaje de éxito -->
@@ -21,10 +18,10 @@
     <p>Se ha ingresado el estudiante correctamente.</p>
 </div>
 
-<!-- Mensaje de error -->
-<div th:if="${error}" class="mensajeNegativo">
-    <p>No se pudo ingresar el estudiante. Vuelve a intentarlo.</p>
+<div class="text-center">
+    <a href="/estudiantes/nuevo" class="btn btn-primary">Nuevo Estudiante</a>
 </div>
+
 
 
 <div class="tabla">

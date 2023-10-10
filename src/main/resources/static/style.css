@@ -71,9 +71,12 @@ table button:hover {
   background-color: #3e5f8a;
 }
 .tabla {
-  margin: 80px 20px; /* Ajusta el margen superior e inferior según tus necesidades */
-  width: 80%/* Puedes ajustar el ancho según tus necesidades */
-  }
+  margin-top: 80px; /* Ajusta el margen superior según sea necesario */
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%; /* Puedes ajustar el ancho según tus necesidades */
+}
+
 
 .tabla table .mensajePositivo{
 
